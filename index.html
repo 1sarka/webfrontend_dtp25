@@ -6,29 +6,35 @@
 <body>
     <h1>hello world </h1>
 
-    <form
+<form action="https://formspree.io/f/xzdkvdkz" method="POST">
+    <h3>Hire me:</h3>
 
-    action="https://formspree.io/f/xzdkvdkz"
-    method="POST" >
-        <h3>Hire me:</h3>
-        <label>
-            Your first name:
-            <input type="firstname" name="firstname">
-        </label>
-        <label>
-            Your last name:
-            <input type="lastname" name="lastname">
-        </label>
+    <label>
+        Your first name:
+        <input type="text" name="firstName">
+    </label>
 
-        <label>
-            Your email:
-            <input type="email" name="email">
-        </label>
-        <label>
-            Your message:
-            <textarea name="message"></textarea>
-        </label>
-        <button type="submit">Submit</button>
-    </form>
+    <label>
+        Your last name:
+        <input type="text" name="lastName">
+    </label>
+
+    <label>
+        Your email:
+        <input type="email" name="email">
+    </label>
+
+    <label>
+        Company name:
+        <input type="text" name="company">
+    </label>
+
+    <label>
+        Your message:
+        <textarea name="message"></textarea>
+    </label>
+
+    <button type="submit">Submit</button>
+</form>
 </body>
 </html>
