@@ -37,7 +37,7 @@
 
     <header id="home" class="hero-section text-white text-center">
         <div class="container">
-       <img  src="imgs/profile-avatar.png"  alt="Profile photo of Lukas Steiner"  class="profile-img mb-4"/>
+            <img src="imgs/profile-avatar.png" alt="Profile photo of Lukas Steiner" class="profile-img mb-4" />
             <h1 class="display-5 fw-bold">Lukas Steiner</h1>
             <p class="lead">Student | Junior Web Developer | UI Design Enthusiast</p>
 
@@ -64,7 +64,8 @@
                     </div>
 
                     <div class="col-lg-4 text-center">
-                        <img src="imgs/workplace.png" alt="Workspace of developer with notebook and motivation title and plants"
+                        <img src="imgs/workplace.png"
+                            alt="Workspace of developer with notebook and motivation title and plants"
                             class="img-fluid rounded shadow-sm" />
                     </div>
                 </div>
@@ -159,6 +160,15 @@
                             </div>
                         </article>
                     </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="alert alert-primary mb-0" role="note">
+                                <strong>Career goal:</strong>
+                                I am currently open to an internship or a part-time position
+                                in web development, IT support, or digital projects.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -172,25 +182,29 @@
                         <form id="contactForm" action="https://formspree.io/f/xdajvvgn" method="POST" novalidate>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full name *</label>
-                                <input type="text" class="form-control" id="name" name="name" autocomplete="name" required minlength="2" />
+                                <input type="text" class="form-control" id="name" name="name" autocomplete="name"
+                                    required minlength="2" />
                                 <div class="invalid-feedback">Please enter at least 2 characters.</div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email *</label>
-                                <input type="email" class="form-control" id="email" autocomplete="email" name="email" required />
+                                <input type="email" class="form-control" id="email" autocomplete="email" name="email"
+                                    required />
                                 <div class="invalid-feedback">Please enter a valid email address.</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 mb-3">
                                     <label for="street" class="form-label">Street *</label>
-                                    <input type="text" class="form-control"   autocomplete="address-line1" id="street" name="street" required />
+                                    <input type="text" class="form-control" autocomplete="address-line1" id="street"
+                                        name="street" required />
                                     <div class="invalid-feedback">Please enter your street.</div>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="houseNumber" class="form-label">House Number *</label>
-                                    <input type="text" class="form-control" id="houseNumber"  autocomplete="address-line2" name="houseNumber" required
+                                    <input type="text" class="form-control" id="houseNumber"
+                                        autocomplete="address-line2" name="houseNumber" required
                                         pattern="[0-9]+[a-zA-Z]?" />
                                     <div class="invalid-feedback">Enter a house number, for example 12 or 12A.</div>
                                 </div>
