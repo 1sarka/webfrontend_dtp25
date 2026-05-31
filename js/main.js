@@ -7,44 +7,55 @@ const cityInput = document.getElementById("city");
 const postalCodeSuggestions = document.getElementById("postalCodeSuggestions");
 const citySuggestions = document.getElementById("citySuggestions");
 
-const apiMessage = document.getElementById("apiMessage");
+const apiMessage = document.getElementById("apiMessage"); 
 
 let places = [];
 
+let isAutoFilling = false;
+
 // PLZ input -> city suggestions + auto-fill city
 postalCodeInput.addEventListener("input", async function () {
+  if (isAutoFilling) return;
+
   const postalCode = postalCodeInput.value.trim();
 
+  cityInput.value = "";
+  postalCodeSuggestions.innerHTML = "";
+  citySuggestions.innerHTML = "";
   clearMessage();
 
   if (postalCode.length < 2) {
-    postalCodeSuggestions.innerHTML = "";
     return;
   }
 
   places = await searchPlaces("postalCode", postalCode);
-
   showSuggestions();
 
   if (postalCode.length === 4 && places.length > 0) {
+    isAutoFilling = true;
     cityInput.value = places[0].name;
+    isAutoFilling = false;
+
     showMessage("City was filled from PLZ.", "success");
   }
 });
 
 // City input -> PLZ suggestions + auto-fill PLZ
 cityInput.addEventListener("input", async function () {
+  if (isAutoFilling) return;
+
   const city = cityInput.value.trim();
 
+  postalCodeInput.value = "";
+  postalCodeSuggestions.innerHTML = "";
+  citySuggestions.innerHTML = "";
   clearMessage();
 
   if (city.length < 2) {
-    citySuggestions.innerHTML = "";
     return;
   }
 
   places = await searchPlaces("name", city);
-
   showSuggestions();
 
   const match = places.find(function (place) {
@@ -52,11 +63,13 @@ cityInput.addEventListener("input", async function () {
   });
 
   if (match) {
+    isAutoFilling = true;
     postalCodeInput.value = getPostalCode(match);
+    isAutoFilling = false;
+
     showMessage("PLZ was filled from city.", "success");
   }
 });
-
 // API search
 async function searchPlaces(type, value) {
   try {
