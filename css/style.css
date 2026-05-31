@@ -73,7 +73,7 @@ body {
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: auto;
+    min-height: 80vh;
     padding-top: 120px;
     padding-bottom: 60px;
   }
@@ -87,17 +87,39 @@ body {
   }
 }
 
+@media (min-width: 768px) {
+  .w-md-auto {
+    width: auto !important;
+  }
+} 
+
+@media (max-width: 576px) {
+  .section-padding {
+    padding: 48px 0;
+  }
+
+  .section-title {
+    margin-bottom: 28px;
+  }
+
+  .profile-img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
 .suggestion-box {
   position: absolute;
   z-index: 1000;
-  width: 95%;
+  left: 0;
+  right: 0;
+  width: 100%;
   max-height: 220px;
   overflow-y: auto;
   background-color: #ffffff;
   border: 1px solid #dee2e6;
   border-radius: 0 0 8px 8px;
 }
-
 .suggestion-box button {
   text-align: left;
 }
