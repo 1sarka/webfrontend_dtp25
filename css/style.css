@@ -86,3 +86,18 @@ body {
     font-size: 2rem;
   }
 }
+
+.suggestion-box {
+  position: absolute;
+  z-index: 1000;
+  width: 95%;
+  max-height: 220px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 0 0 8px 8px;
+}
+
+.suggestion-box button {
+  text-align: left;
+}

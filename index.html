@@ -196,37 +196,37 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="postalCode" class="form-label">Postal Code *</label>
-                                    <input type="text" class="form-control" id="postalCode" name="postalCode"
-                                        list="postalCodeSuggestions" required pattern="[0-9]{4}" maxlength="4"
-                                        autocomplete="postal-code" />
-                                    <datalist id="postalCodeSuggestions"></datalist>
-                                    <div class="invalid-feedback">Please enter a valid 4-digit Swiss PLZ.</div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3 position-relative">
+                                        <label for="postalCode" class="form-label">Postal Code *</label>
+                                        <input type="text" class="form-control" id="postalCode" name="postalCode"
+                                            required pattern="[0-9]{4}" maxlength="4" autocomplete="off" />
+                                        <div id="postalCodeDropdown" class="list-group suggestion-box d-none"></div>
+                                        <div class="invalid-feedback">Please enter a valid 4-digit Swiss PLZ.</div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3 position-relative">
+                                        <label for="city" class="form-label">City *</label>
+                                        <input type="text" class="form-control" id="city" name="city" required
+                                            autocomplete="off" />
+                                        <div id="cityDropdown" class="list-group suggestion-box d-none"></div>
+                                        <div class="invalid-feedback">City is required.</div>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-6 mb-3">
-                                    <label for="city" class="form-label">City *</label>
-                                    <input type="text" class="form-control" id="city" name="city" list="citySuggestions"
-                                        required autocomplete="address-level2" />
-                                    <datalist id="citySuggestions"></datalist>
-                                    <div class="invalid-feedback">City is required.</div>
+                                <div id="apiMessage" class="small mb-3" aria-live="polite"></div>
+
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required
+                                        minlength="10"></textarea>
+                                    <div class="invalid-feedback">Please enter at least 10 characters.</div>
                                 </div>
-                            </div>
 
-                            <div id="apiMessage" class="small mb-3" aria-live="polite"></div>
-
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message *</label>
-                                <textarea class="form-control" id="message" name="message" rows="5" required
-                                    minlength="10"></textarea>
-                                <div class="invalid-feedback">Please enter at least 10 characters.</div>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                            <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
-                                Your message was sent successfully.
-                            </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                                <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
+                                    Your message was sent successfully.
+                                </div>
                         </form>
                     </div>
                 </div>

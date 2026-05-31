@@ -4,73 +4,49 @@ const successMessage = document.getElementById("successMessage");
 const postalCodeInput = document.getElementById("postalCode");
 const cityInput = document.getElementById("city");
 
-const postalCodeSuggestions = document.getElementById("postalCodeSuggestions");
-const citySuggestions = document.getElementById("citySuggestions");
+const postalCodeDropdown = document.getElementById("postalCodeDropdown");
+const cityDropdown = document.getElementById("cityDropdown");
 
-const apiMessage = document.getElementById("apiMessage"); 
-
-let places = [];
+const apiMessage = document.getElementById("apiMessage");
 
 let isAutoFilling = false;
 
-// PLZ input -> city suggestions + auto-fill city
+/* ---------- OPENPLZ: PLZ -> CITY ---------- */
+
 postalCodeInput.addEventListener("input", async function () {
   if (isAutoFilling) return;
 
   const postalCode = postalCodeInput.value.trim();
 
   cityInput.value = "";
-  postalCodeSuggestions.innerHTML = "";
-  citySuggestions.innerHTML = "";
+  hideDropdowns();
   clearMessage();
 
-  if (postalCode.length < 2) {
-    return;
-  }
+  if (postalCode.length < 2) return;
 
-  places = await searchPlaces("postalCode", postalCode);
-  showSuggestions();
-
-  if (postalCode.length === 4 && places.length > 0) {
-    isAutoFilling = true;
-    cityInput.value = places[0].name;
-    isAutoFilling = false;
-
-    showMessage("City was filled from PLZ.", "success");
-  }
+  const places = await searchPlaces("postalCode", postalCode);
+  showPostalCodeDropdown(places);
 });
 
-// City input -> PLZ suggestions + auto-fill PLZ
+/* ---------- OPENPLZ: CITY -> PLZ ---------- */
+
 cityInput.addEventListener("input", async function () {
   if (isAutoFilling) return;
 
   const city = cityInput.value.trim();
 
   postalCodeInput.value = "";
-  postalCodeSuggestions.innerHTML = "";
-  citySuggestions.innerHTML = "";
+  hideDropdowns();
   clearMessage();
 
-  if (city.length < 2) {
-    return;
-  }
+  if (city.length < 2) return;
 
-  places = await searchPlaces("name", city);
-  showSuggestions();
-
-  const match = places.find(function (place) {
-    return place.name.toLowerCase() === city.toLowerCase();
-  });
-
-  if (match) {
-    isAutoFilling = true;
-    postalCodeInput.value = getPostalCode(match);
-    isAutoFilling = false;
-
-    showMessage("PLZ was filled from city.", "success");
-  }
+  const places = await searchPlaces("name", city);
+  showCityDropdown(places);
 });
-// API search
+
+/* ---------- OPENPLZ API SEARCH ---------- */
+
 async function searchPlaces(type, value) {
   try {
     const response = await fetch(
@@ -78,7 +54,7 @@ async function searchPlaces(type, value) {
     );
 
     if (!response.ok) {
-      throw new Error("OpenPLZ request failed");
+      throw new Error("OpenPLZ request failed.");
     }
 
     return await response.json();
@@ -88,28 +64,69 @@ async function searchPlaces(type, value) {
   }
 }
 
-// Fill both dropdowns
-function showSuggestions() {
-  postalCodeSuggestions.innerHTML = "";
-  citySuggestions.innerHTML = "";
+/* ---------- DROPDOWN FOR PLZ FIELD ---------- */
+
+function showPostalCodeDropdown(places) {
+  postalCodeDropdown.innerHTML = "";
 
   places.forEach(function (place) {
-    const postalCode = getPostalCode(place);
-    const city = place.name;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "list-group-item list-group-item-action";
+    button.textContent = `${getPostalCode(place)} ${place.name}`;
 
-    const postalOption = document.createElement("option");
-    postalOption.value = postalCode;
-    postalOption.label = city;
-    postalCodeSuggestions.appendChild(postalOption);
+    button.addEventListener("click", function () {
+      selectPlace(place);
+    });
 
-    const cityOption = document.createElement("option");
-    cityOption.value = city;
-    cityOption.label = postalCode;
-    citySuggestions.appendChild(cityOption);
+    postalCodeDropdown.appendChild(button);
   });
+
+  postalCodeDropdown.classList.toggle("d-none", places.length === 0);
 }
 
-// Helper because API field name can vary
+/* ---------- DROPDOWN FOR CITY FIELD ---------- */
+
+function showCityDropdown(places) {
+  cityDropdown.innerHTML = "";
+
+  places.forEach(function (place) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "list-group-item list-group-item-action";
+    button.textContent = `${place.name} (${getPostalCode(place)})`;
+
+    button.addEventListener("click", function () {
+      selectPlace(place);
+    });
+
+    cityDropdown.appendChild(button);
+  });
+
+  cityDropdown.classList.toggle("d-none", places.length === 0);
+}
+
+/* ---------- SELECT ONE ADDRESS OPTION ---------- */
+
+function selectPlace(place) {
+  isAutoFilling = true;
+
+  postalCodeInput.value = getPostalCode(place);
+  cityInput.value = place.name;
+
+  isAutoFilling = false;
+
+  hideDropdowns();
+  showMessage("Address selected.", "success");
+}
+
+/* ---------- HELPERS ---------- */
+
+function hideDropdowns() {
+  postalCodeDropdown.classList.add("d-none");
+  cityDropdown.classList.add("d-none");
+}
+
 function getPostalCode(place) {
   return place.postalCode || place.postalcode || "";
 }
@@ -123,7 +140,21 @@ function clearMessage() {
   apiMessage.textContent = "";
   apiMessage.className = "small mb-3";
 }
-// Form validation + real Formspree submit
+
+document.addEventListener("click", function (event) {
+  const clickedInsideAddress =
+    postalCodeInput.contains(event.target) ||
+    cityInput.contains(event.target) ||
+    postalCodeDropdown.contains(event.target) ||
+    cityDropdown.contains(event.target);
+
+  if (!clickedInsideAddress) {
+    hideDropdowns();
+  }
+});
+
+/* ---------- FORM VALIDATION + FORMSPREE SUBMIT ---------- */
+
 contactForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
@@ -157,8 +188,7 @@ contactForm.addEventListener("submit", async function (event) {
     contactForm.reset();
     contactForm.classList.remove("was-validated");
 
-    postalCodeSuggestions.innerHTML = "";
-    citySuggestions.innerHTML = "";
+    hideDropdowns();
     clearMessage();
   } catch (error) {
     successMessage.textContent = "Message could not be sent. Please try again.";
@@ -167,7 +197,8 @@ contactForm.addEventListener("submit", async function (event) {
   }
 });
 
-// Close mobile navbar after link click
+/* ---------- MOBILE NAVBAR CLOSE ---------- */
+
 const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
 const navbarCollapse = document.querySelector(".navbar-collapse");
 
