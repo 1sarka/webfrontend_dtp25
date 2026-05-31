@@ -1,243 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Interactive CV and portfolio website." />
-  <title>My Portfolio CV</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive CV and portfolio website." />
+    <title>My Portfolio CV</title>
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Main navigation">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#home">My CV</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">My CV</a>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <header id="home" class="hero-section text-white text-center">
-    <div class="container">
-      <img
-        src="https://via.placeholder.com/180"
-        alt="Profile photo placeholder"
-        class="profile-img mb-4"
-      />
-
-      <h1 class="display-5 fw-bold">Your Name</h1>
-      <p class="lead">Student | Future Web Developer | Creative Problem Solver</p>
-
-      <a href="#contact" class="btn btn-primary btn-lg mt-3">Contact Me</a>
-    </div>
-  </header>
-
-  <main>
-    <section id="about" class="section-padding">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-
-        <div class="row align-items-center">
-          <div class="col-lg-8">
-            <p>
-              I am a motivated student interested in web development, UI design,
-              and digital solutions. This portfolio website presents my skills,
-              education, experience, and contact information.
-            </p>
-            <p>
-              My goal is to create clean, accessible, and responsive websites
-              using HTML, CSS, Bootstrap, and JavaScript.
-            </p>
-          </div>
-
-          <div class="col-lg-4 text-center">
-            <img
-              src="https://via.placeholder.com/300x220"
-              alt="Workspace placeholder image"
-              class="img-fluid rounded shadow-sm"
-            />
-          </div>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </section>
+    </nav>
 
-    <section id="skills" class="section-padding bg-light">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
+    <header id="home" class="hero-section text-white text-center">
+        <div class="container">
+            <img src="https://via.placeholder.com/180" alt="Profile photo placeholder" class="profile-img mb-4" />
 
-        <div class="row g-4">
-          <div class="col-md-4">
-            <article class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h3 class="h5 card-title">HTML</h3>
-                <p class="card-text">Semantic structure, forms, accessibility basics.</p>
-              </div>
-            </article>
-          </div>
+            <h1 class="display-5 fw-bold">Lukas Steiner</h1>
+            <p class="lead">Student | Junior Web Developer | UI Design Enthusiast</p>
 
-          <div class="col-md-4">
-            <article class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h3 class="h5 card-title">CSS & Bootstrap</h3>
-                <p class="card-text">Responsive layouts, spacing, typography, components.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-md-4">
-            <article class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h3 class="h5 card-title">JavaScript</h3>
-                <p class="card-text">Form validation, DOM interaction, API integration.</p>
-              </div>
-            </article>
-          </div>
+            <a href="#contact" class="btn btn-primary btn-lg mt-3">Contact Me</a>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section id="education" class="section-padding">
-      <div class="container">
-        <h2 class="section-title">Education</h2>
+    <main>
+        <section id="about" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
 
-        <div class="timeline">
-          <article class="timeline-item">
-            <h3 class="h5">School Name</h3>
-            <p class="text-muted mb-1">2024 – Present</p>
-            <p>Short description of your current education or training program.</p>
-          </article>
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <p>
+                            I am Lukas Steiner, a motivated student from St. Gallen with a strong
+                            interest in frontend development, UI design, and digital problem solving.
+                        </p>
+                        <p>
+                            I enjoy building clean, responsive, and accessible websites using HTML,
+                            CSS, Bootstrap, and JavaScript. My goal is to prepare for a future career
+                            in web development or IT.
+                        </p>
+                    </div>
 
-          <article class="timeline-item">
-            <h3 class="h5">Previous School</h3>
-            <p class="text-muted mb-1">2020 – 2024</p>
-            <p>Short description of your previous education.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="section-padding bg-light">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-
-        <div class="row g-4">
-          <div class="col-md-6">
-            <article class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h3 class="h5">Project Work</h3>
-                <p class="text-muted">Web Development</p>
-                <p>
-                  Created small web projects using HTML, CSS, and JavaScript.
-                  Focused on layout, usability, and responsive design.
-                </p>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-md-6">
-            <article class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h3 class="h5">Teamwork</h3>
-                <p class="text-muted">School / Training</p>
-                <p>
-                  Worked in teams, solved problems, presented results, and
-                  improved communication skills.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section-padding">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <form id="contactForm" novalidate>
-              <div class="mb-3">
-                <label for="name" class="form-label">Name *</label>
-                <input type="text" class="form-control" id="name" required />
-                <div class="invalid-feedback">Please enter your name.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="email" class="form-label">Email *</label>
-                <input type="email" class="form-control" id="email" required />
-                <div class="invalid-feedback">Please enter a valid email address.</div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="postalCode" class="form-label">Postal Code / PLZ *</label>
-                  <input type="text" class="form-control" id="postalCode" required />
-                  <div class="invalid-feedback">Please enter a postal code.</div>
+                    <div class="col-lg-4 text-center">
+                        <img src="https://via.placeholder.com/300x220" alt="Workspace placeholder image"
+                            class="img-fluid rounded shadow-sm" />
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="col-md-6 mb-3">
-                  <label for="city" class="form-label">City / Wohnort *</label>
-                  <input type="text" class="form-control" id="city" required />
-                  <div class="invalid-feedback">Please enter a city.</div>
+        <section id="skills" class="section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5 card-title">HTML & CSS</h3>
+                                <p class="card-text">Semantic structure, forms, layout, spacing, and responsive design.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5 card-title">Bootstrap 5</h3>
+                                <p class="card-text">Grid system, components, navbar, cards, and mobile-first layouts.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5 card-title">JavaScript</h3>
+                                <p class="card-text">DOM interaction, form validation, API integration, and user
+                                    feedback.</p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-              </div>
+            </div>
+        </section>
 
-              <div class="mb-3">
-                <label for="message" class="form-label">Message *</label>
-                <textarea class="form-control" id="message" rows="5" required></textarea>
-                <div class="invalid-feedback">Please enter a message.</div>
-              </div>
+        <section id="education" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
 
-              <button type="submit" class="btn btn-primary">Send Message</button>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <h3 class="h5">GBS St. Gallen</h3>
+                        <p class="text-muted mb-1">2024 – Present</p>
+                        <p>Weiterbildung / Informatik modules with focus on UI design and web frontend development.</p>
+                    </article>
 
-              <div
-                id="successMessage"
-                class="alert alert-success mt-3 d-none"
-                role="alert"
-              >
-                Your message was successfully validated.
-              </div>
-            </form>
-          </div>
+                    <article class="timeline-item">
+                        <h3 class="h5">Kantonsschule St. Gallen</h3>
+                        <p class="text-muted mb-1">2020 – 2024</p>
+                        <p>General education with focus on communication, technology, and project work.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <article class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5">School Web Project</h3>
+                                <p class="text-muted">Frontend Developer</p>
+                                <p>
+                                    Created a responsive portfolio website using HTML, Bootstrap, CSS,
+                                    and vanilla JavaScript.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h3 class="h5">Gaming Community Website</h3>
+                                <p class="text-muted">Private Web Project</p>
+                                <p>Built a small website together with friends for a gaming community.
+                                    The project focused on presenting news, events, team information,
+                                    and useful links for community members.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <form id="contactForm" novalidate>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name *</label>
+                                <input type="text" class="form-control" id="name" required />
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="email" required />
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="postalCode" class="form-label">Postal Code / PLZ *</label>
+                                    <input type="text" class="form-control" id="postalCode" required />
+                                    <div class="invalid-feedback">Please enter a postal code.</div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="city" class="form-label">City / Wohnort *</label>
+                                    <input type="text" class="form-control" id="city" required />
+                                    <div class="invalid-feedback">Please enter a city.</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                                <div class="invalid-feedback">Please enter a message.</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+
+                            <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
+                                Your message was successfully validated.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Lukas Steiner. All rights reserved.</p>
         </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-      <p class="mb-0">&copy; 2026 Your Name. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
