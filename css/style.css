@@ -144,3 +144,17 @@ body {
   font-weight: 700;
   border-bottom: 2px solid #ffffff;
 }
+
+
+.navbar-dark .navbar-toggler {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.navbar-dark .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.navbar-dark .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
+}
