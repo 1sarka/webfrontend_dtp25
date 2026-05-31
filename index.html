@@ -197,22 +197,23 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="postalCode" class="form-label">Postal Code / PLZ *</label>
-                                    <input type="text" class="form-control" id="postalCode" required pattern="[0-9]{4}"
-                                        maxlength="4" autocomplete="postal-code" />
+                                    <input type="text" class="form-control" id="postalCode" list="postalCodeSuggestions"
+                                        required pattern="[0-9]{4}" maxlength="4" autocomplete="postal-code" />
+                                    <datalist id="postalCodeSuggestions"></datalist>
                                     <div class="invalid-feedback">Please enter a valid 4-digit Swiss PLZ.</div>
-                                    <div id="plzHelp" class="form-text">Example: 9000</div>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label for="city" class="form-label">City / Wohnort *</label>
-                                    <input type="text" class="form-control" id="city" required
+                                    <input type="text" class="form-control" id="city" list="citySuggestions" required
                                         autocomplete="address-level2" />
+                                    <datalist id="citySuggestions"></datalist>
                                     <div class="invalid-feedback">City is required.</div>
                                 </div>
                             </div>
 
                             <div id="apiMessage" class="small mb-3" aria-live="polite"></div>
-
+                            
                             <div class="mb-3">
                                 <label for="message" class="form-label">Message *</label>
                                 <textarea class="form-control" id="message" rows="5" required minlength="10"></textarea>

@@ -1,51 +1,117 @@
 const contactForm = document.getElementById("contactForm");
 const successMessage = document.getElementById("successMessage");
+
 const postalCodeInput = document.getElementById("postalCode");
 const cityInput = document.getElementById("city");
+
+const postalCodeSuggestions = document.getElementById("postalCodeSuggestions");
+const citySuggestions = document.getElementById("citySuggestions");
+
 const apiMessage = document.getElementById("apiMessage");
 
-postalCodeInput.addEventListener("input", function () {
+let places = [];
+
+// PLZ input -> city suggestions + auto-fill city
+postalCodeInput.addEventListener("input", async function () {
   const postalCode = postalCodeInput.value.trim();
 
-  cityInput.value = "";
-  apiMessage.textContent = "";
-  apiMessage.className = "small mb-3";
+  clearMessage();
 
-  if (postalCode.length === 4 && /^[0-9]{4}$/.test(postalCode)) {
-    fetchCityByPostalCode(postalCode);
+  if (postalCode.length < 2) {
+    postalCodeSuggestions.innerHTML = "";
+    return;
+  }
+
+  places = await searchPlaces("postalCode", postalCode);
+
+  showSuggestions();
+
+  if (postalCode.length === 4 && places.length > 0) {
+    cityInput.value = places[0].name;
+    showMessage("City was filled from PLZ.", "success");
   }
 });
 
-async function fetchCityByPostalCode(postalCode) {
-  try {
-    apiMessage.textContent = "Searching city...";
-    apiMessage.classList.add("text-muted");
+// City input -> PLZ suggestions + auto-fill PLZ
+cityInput.addEventListener("input", async function () {
+  const city = cityInput.value.trim();
 
+  clearMessage();
+
+  if (city.length < 2) {
+    citySuggestions.innerHTML = "";
+    return;
+  }
+
+  places = await searchPlaces("name", city);
+
+  showSuggestions();
+
+  const match = places.find(function (place) {
+    return place.name.toLowerCase() === city.toLowerCase();
+  });
+
+  if (match) {
+    postalCodeInput.value = getPostalCode(match);
+    showMessage("PLZ was filled from city.", "success");
+  }
+});
+
+// API search
+async function searchPlaces(type, value) {
+  try {
     const response = await fetch(
-      `https://openplzapi.org/ch/Localities?postalCode=${postalCode}`
+      `https://openplzapi.org/ch/Localities?${type}=${encodeURIComponent(value)}&pageSize=10`
     );
 
     if (!response.ok) {
-      throw new Error("API request failed.");
+      throw new Error("OpenPLZ request failed");
     }
 
-    const data = await response.json();
-
-    if (!data || data.length === 0) {
-      apiMessage.textContent = "No city found for this PLZ.";
-      apiMessage.className = "small mb-3 text-danger";
-      return;
-    }
-
-    cityInput.value = data[0].name;
-    apiMessage.textContent = "City automatically filled.";
-    apiMessage.className = "small mb-3 text-success";
+    return await response.json();
   } catch (error) {
-    apiMessage.textContent = "City lookup is currently unavailable.";
-    apiMessage.className = "small mb-3 text-danger";
+    showMessage("Address lookup is currently unavailable.", "danger");
+    return [];
   }
 }
 
+// Fill both dropdowns
+function showSuggestions() {
+  postalCodeSuggestions.innerHTML = "";
+  citySuggestions.innerHTML = "";
+
+  places.forEach(function (place) {
+    const postalCode = getPostalCode(place);
+    const city = place.name;
+
+    const postalOption = document.createElement("option");
+    postalOption.value = postalCode;
+    postalOption.label = city;
+    postalCodeSuggestions.appendChild(postalOption);
+
+    const cityOption = document.createElement("option");
+    cityOption.value = city;
+    cityOption.label = postalCode;
+    citySuggestions.appendChild(cityOption);
+  });
+}
+
+// Helper because API field name can vary
+function getPostalCode(place) {
+  return place.postalCode || place.postalcode || "";
+}
+
+function showMessage(text, type) {
+  apiMessage.textContent = text;
+  apiMessage.className = `small mb-3 text-${type}`;
+}
+
+function clearMessage() {
+  apiMessage.textContent = "";
+  apiMessage.className = "small mb-3";
+}
+
+// Form validation
 contactForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -59,10 +125,13 @@ contactForm.addEventListener("submit", function (event) {
   successMessage.classList.remove("d-none");
   contactForm.reset();
   contactForm.classList.remove("was-validated");
-  apiMessage.textContent = "";
+
+  postalCodeSuggestions.innerHTML = "";
+  citySuggestions.innerHTML = "";
+  clearMessage();
 });
 
-// Close mobile navbar after clicking a link
+// Close mobile navbar after link click
 const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
 const navbarCollapse = document.querySelector(".navbar-collapse");
 
