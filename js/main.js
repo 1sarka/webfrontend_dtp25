@@ -123,25 +123,48 @@ function clearMessage() {
   apiMessage.textContent = "";
   apiMessage.className = "small mb-3";
 }
-
-// Form validation
-contactForm.addEventListener("submit", function (event) {
+// Form validation + real Formspree submit
+contactForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   successMessage.classList.add("d-none");
+  successMessage.classList.remove("alert-success", "alert-danger");
 
   if (!contactForm.checkValidity()) {
     contactForm.classList.add("was-validated");
     return;
   }
 
-  successMessage.classList.remove("d-none");
-  contactForm.reset();
-  contactForm.classList.remove("was-validated");
+  const formData = new FormData(contactForm);
 
-  postalCodeSuggestions.innerHTML = "";
-  citySuggestions.innerHTML = "";
-  clearMessage();
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Formspree request failed.");
+    }
+
+    successMessage.textContent = "Your message was sent successfully.";
+    successMessage.classList.add("alert-success");
+    successMessage.classList.remove("d-none");
+
+    contactForm.reset();
+    contactForm.classList.remove("was-validated");
+
+    postalCodeSuggestions.innerHTML = "";
+    citySuggestions.innerHTML = "";
+    clearMessage();
+  } catch (error) {
+    successMessage.textContent = "Message could not be sent. Please try again.";
+    successMessage.classList.add("alert-danger");
+    successMessage.classList.remove("d-none");
+  }
 });
 
 // Close mobile navbar after link click
