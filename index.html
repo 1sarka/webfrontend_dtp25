@@ -171,7 +171,7 @@
                     <div class="col-lg-8">
                         <form id="contactForm" action="https://formspree.io/f/xdajvvgn" method="POST" novalidate>
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name *</label>
+                                <label for="name" class="form-label">Full name *</label>
                                 <input type="text" class="form-control" id="name" name="name" required minlength="2" />
                                 <div class="invalid-feedback">Please enter at least 2 characters.</div>
                             </div>
@@ -183,13 +183,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-8 mb-3">
-                                    <label for="street" class="form-label">Street / Strasse *</label>
+                                    <label for="street" class="form-label">Street *</label>
                                     <input type="text" class="form-control" id="street" name="street" required />
                                     <div class="invalid-feedback">Please enter your street.</div>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="houseNumber" class="form-label">House Number / Hausnummer *</label>
+                                    <label for="houseNumber" class="form-label">House Number *</label>
                                     <input type="text" class="form-control" id="houseNumber" name="houseNumber"
                                         required />
                                     <div class="invalid-feedback">Please enter your house number.</div>
@@ -197,7 +197,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="postalCode" class="form-label">Postal Code / PLZ *</label>
+                                    <label for="postalCode" class="form-label">Postal Code *</label>
                                     <input type="text" class="form-control" id="postalCode" name="postalCode"
                                         list="postalCodeSuggestions" required pattern="[0-9]{4}" maxlength="4"
                                         autocomplete="postal-code" />
@@ -206,7 +206,7 @@
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="city" class="form-label">City / Wohnort *</label>
+                                    <label for="city" class="form-label">City *</label>
                                     <input type="text" class="form-control" id="city" name="city" list="citySuggestions"
                                         required autocomplete="address-level2" />
                                     <datalist id="citySuggestions"></datalist>
