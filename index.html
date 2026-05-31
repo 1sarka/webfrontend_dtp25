@@ -171,25 +171,25 @@
                         <form id="contactForm" action="https://formspree.io/f/xdajvvgn" method="POST" novalidate>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full name *</label>
-                                <input type="text" class="form-control" id="name" name="name" required minlength="2" />
+                                <input type="text" class="form-control" id="name" name="name" autocomplete="name" required minlength="2" />
                                 <div class="invalid-feedback">Please enter at least 2 characters.</div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email *</label>
-                                <input type="email" class="form-control" id="email" name="email" required />
+                                <input type="email" class="form-control" id="email" autocomplete="email" name="email" required />
                                 <div class="invalid-feedback">Please enter a valid email address.</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 mb-3">
                                     <label for="street" class="form-label">Street *</label>
-                                    <input type="text" class="form-control" id="street" name="street" required />
+                                    <input type="text" class="form-control"   autocomplete="address-line1" id="street" name="street" required />
                                     <div class="invalid-feedback">Please enter your street.</div>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="houseNumber" class="form-label">House Number *</label>
-                                    <input type="text" class="form-control" id="houseNumber" name="houseNumber" required
+                                    <input type="text" class="form-control" id="houseNumber"  autocomplete="address-line2" name="houseNumber" required
                                         pattern="[0-9]+[a-zA-Z]?" />
                                     <div class="invalid-feedback">Enter a house number, for example 12 or 12A.</div>
                                 </div>
