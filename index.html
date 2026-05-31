@@ -172,8 +172,8 @@
                         <form id="contactForm" novalidate>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name *</label>
-                                <input type="text" class="form-control" id="name" required />
-                                <div class="invalid-feedback">Please enter your name.</div>
+                                <input type="text" class="form-control" id="name" required minlength="2" />
+                                <div class="invalid-feedback">Please enter at least 2 characters.</div>
                             </div>
 
                             <div class="mb-3">
@@ -185,27 +185,32 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="postalCode" class="form-label">Postal Code / PLZ *</label>
-                                    <input type="text" class="form-control" id="postalCode" required />
-                                    <div class="invalid-feedback">Please enter a postal code.</div>
+                                    <input type="text" class="form-control" id="postalCode" required pattern="[0-9]{4}"
+                                        maxlength="4" autocomplete="postal-code" />
+                                    <div class="invalid-feedback">Please enter a valid 4-digit Swiss PLZ.</div>
+                                    <div id="plzHelp" class="form-text">Example: 9000</div>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label for="city" class="form-label">City / Wohnort *</label>
-                                    <input type="text" class="form-control" id="city" required />
-                                    <div class="invalid-feedback">Please enter a city.</div>
+                                    <input type="text" class="form-control" id="city" required
+                                        autocomplete="address-level2" />
+                                    <div class="invalid-feedback">City is required.</div>
                                 </div>
                             </div>
 
+                            <div id="apiMessage" class="small mb-3" aria-live="polite"></div>
+
                             <div class="mb-3">
                                 <label for="message" class="form-label">Message *</label>
-                                <textarea class="form-control" id="message" rows="5" required></textarea>
-                                <div class="invalid-feedback">Please enter a message.</div>
+                                <textarea class="form-control" id="message" rows="5" required minlength="10"></textarea>
+                                <div class="invalid-feedback">Please enter at least 10 characters.</div>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Send Message</button>
 
                             <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
-                                Your message was successfully validated.
+                                Your message was successfully validated and is ready to be sent.
                             </div>
                         </form>
                     </div>
