@@ -26,8 +26,7 @@ body {
   min-height: 100vh;
   padding-top: 120px;
   padding-bottom: 80px;
-  background: linear-gradient(rgba(33, 37, 41, 0.85), rgba(33, 37, 41, 0.85)),
-    url("https://via.placeholder.com/1600x900") center/cover no-repeat;
+  background: linear-gradient(rgba(33, 37, 41, 0.75), rgba(33, 37, 41, 0.75)), url("../imgs/hero-background.png") center/cover no-repeat;
   display: flex;
   align-items: center;
 }
@@ -97,7 +96,7 @@ body {
   .w-md-auto {
     width: auto !important;
   }
-} 
+}
 
 @media (max-width: 576px) {
   .section-padding {
@@ -117,8 +116,8 @@ body {
 .suggestion-box {
   position: absolute;
   z-index: 1000;
- right: 2.5%;
- left: 2.5%;
+  right: 2.5%;
+  left: 2.5%;
   width: 95%;
   max-height: 220px;
   overflow-y: auto;
@@ -126,6 +125,7 @@ body {
   border: 1px solid #dee2e6;
   border-radius: 0 0 8px 8px;
 }
+
 .suggestion-box button {
   text-align: left;
 }
