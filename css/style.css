@@ -117,7 +117,8 @@ body {
 .suggestion-box {
   position: absolute;
   z-index: 1000;
- 
+ right: 2.5%;
+ left: 2.5%;
   width: 95%;
   max-height: 220px;
   overflow-y: auto;
