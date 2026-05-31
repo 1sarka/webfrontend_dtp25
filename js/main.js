@@ -210,3 +210,32 @@ navLinks.forEach(function (link) {
     }
   });
 });
+
+/* ---------- ACTIVE NAV LINK ON SCROLL ---------- */
+
+const sections = document.querySelectorAll("section[id], header[id]");
+const menuLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+window.addEventListener("scroll", function () {
+  let currentSectionId = "";
+
+  sections.forEach(function (section) {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.offsetHeight;
+
+    if (
+      window.scrollY >= sectionTop &&
+      window.scrollY < sectionTop + sectionHeight
+    ) {
+      currentSectionId = section.getAttribute("id");
+    }
+  });
+
+  menuLinks.forEach(function (link) {
+    link.classList.remove("active");
+
+    if (link.getAttribute("href") === "#" + currentSectionId) {
+      link.classList.add("active");
+    }
+  });
+});
