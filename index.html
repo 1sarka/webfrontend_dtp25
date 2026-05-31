@@ -191,8 +191,8 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="houseNumber" class="form-label">House Number *</label>
                                     <input type="text" class="form-control" id="houseNumber" name="houseNumber"
-                                        required />
-                                    <div class="invalid-feedback">Please enter your house number.</div>
+                                        required  pattern="[0-9]+[a-zA-Z]?"/>
+                                    <div class="invalid-feedback">Enter a house number, for example 12 or 12A.</div>
                                 </div>
                             </div>
                             <div class="row">
